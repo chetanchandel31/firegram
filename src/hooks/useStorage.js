@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { storage } from "../firebase/firebase";
+import { firebaseStorage, firestore, serverTimestsamp } from "../firebase/firebase";
 
 const useStorage = file => {
 	const [progress, setProgress] = useState(0);
@@ -8,7 +8,8 @@ const useStorage = file => {
 
 	useEffect(() => {
 		//create a ref in "firebase storage" where we will later store an actual image
-		const storageRef = storage.ref(file.name);
+		const storageRef = firebaseStorage.ref(file.name);
+		const collectionRef = firestore.collection("images");
 
 		//put the actual image in that ref using an asyncronous method
 		storageRef.put(file).on(
@@ -23,6 +24,7 @@ const useStorage = file => {
 			async () => {
 				//URL of actual image in "firebase storage"
 				const url = await storageRef.getDownloadURL();
+				collectionRef.add({ url, createdAt: serverTimestsamp() });
 				setUrl(url);
 			}
 		);

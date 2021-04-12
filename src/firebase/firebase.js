@@ -13,6 +13,7 @@ firebase.initializeApp({
 });
 
 export const firestore = firebase.firestore();
-export const storage = firebase.storage();
+export const firebaseStorage = firebase.storage();
+export const serverTimestsamp = firebase.firestore.FieldValue.serverTimestamp;
 
 export default firebase;
