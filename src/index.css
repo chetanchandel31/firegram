@@ -170,6 +170,10 @@ label:hover {
 	color: white;
 	background-color: var(--error);
 }
+
+.postDesc {
+	padding: 5px;
+}
 /* modal styles */
 .backdrop {
 	position: fixed;

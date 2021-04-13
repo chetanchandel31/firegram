@@ -24,7 +24,8 @@ const ImageGrid = ({ setSelectedImage }) => {
 			{docs?.map(doc => (
 				<div key={doc.id} className="post">
 					<div className="postHeader">
-						<img src={doc.userPhotoUrl} className="userDp" alt="dp" /> {doc?.userName}
+						<img src={doc.userPhotoUrl} className="userDp" alt="dp" />
+						<strong>{doc?.userName}</strong>
 					</div>
 					<div className="img-wrap" onClick={() => setSelectedImage(doc.url)}>
 						<img src={doc.url} alt="can't load" />
@@ -41,7 +42,7 @@ const ImageGrid = ({ setSelectedImage }) => {
 							</button>
 						)}
 					</div>
-					<div>
+					<div className="postDesc">
 						<strong>{doc.userName}</strong> {doc?.description}
 					</div>
 				</div>
