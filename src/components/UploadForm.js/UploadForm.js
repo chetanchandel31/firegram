@@ -2,35 +2,45 @@ import React, { useState } from "react";
 import ProgressBar from "./ProgressBar";
 
 const UploadForm = () => {
-	const [file, setFile] = useState(null);
+	const [file, setFile] = useState({ image: null, description: "" });
 	const [error, setError] = useState("");
-
+	const [upload, setUpload] = useState(false);
 	const desiredImageTypes = ["image/jpeg", "image/png"];
 
-	const changeHandler = e => {
-		const selectedFile = e.target.files[0];
+	const changeHandler = ({ target }) => {
+		const selectedFile = target.files[0];
 
 		if (selectedFile && desiredImageTypes.includes(selectedFile.type)) {
-			setFile(e.target.files[0]);
+			setFile(file => ({ ...file, image: target.files[0] }));
 			setError("");
 		} else {
 			setError("please upload a .jpeg or .png image");
-			setFile(null);
+			setFile(file => ({ ...file, image: null }));
 		}
 	};
 
-	return (
-		<form>
-			<label>
-				<input type="file" onChange={changeHandler} />
-				<span>+</span>
-			</label>
+	const submitHandler = e => {
+		e.preventDefault();
+		if (!file.image) return;
+		setUpload(true);
+	};
 
+	return (
+		<form onSubmit={submitHandler}>
+			<input placeholder="whats on your mind?" onChange={({ target }) => setFile(file => ({ ...file, description: target.value }))} value={file.description} />{" "}
+			<br />
+			<label>
+				<input type="file" onChange={changeHandler} required />
+				<span>add an image</span>
+			</label>
 			<div className="output">
 				<div className="error">{error}</div>
-				<div>{file?.name}</div>
-				{file && <ProgressBar file={file} setFile={setFile} />}
+				<div>{file?.image?.name}</div>
+				{upload && <ProgressBar file={file} setFile={setFile} setUpload={setUpload} />}
 			</div>
+			<button className="submitBtn" type="submit">
+				create post
+			</button>
 		</form>
 	);
 };
