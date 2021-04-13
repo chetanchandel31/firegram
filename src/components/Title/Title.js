@@ -4,7 +4,7 @@ import firebase, { auth } from "../../firebase/firebase";
 
 const Title = () => {
 	const [user] = useAuthState(auth);
-	console.log(user);
+	// console.log(user);
 
 	const authHandler = () => {
 		if (user) auth.signOut();
@@ -18,8 +18,7 @@ const Title = () => {
 				<button onClick={authHandler}>{user ? "logout" : "google sign in"}</button>
 			</div>
 			<h1>FireGram</h1>
-			<h2>Your Pictures</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+			{!user && <p>You can sign in with google to create posts and like other's posts</p>}
 		</div>
 	);
 };
