@@ -38,7 +38,7 @@ const UploadForm = () => {
 				/>{" "}
 				<br />
 				<label>
-					<input type="file" onChange={changeHandler} required />
+					<input type="file" onChange={changeHandler} />
 					<span>add an image</span>
 				</label>
 				<div className="output">
