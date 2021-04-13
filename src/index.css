@@ -15,11 +15,25 @@ body {
 	max-width: 960px;
 	margin: 0 auto;
 }
+.title .header {
+	text-align: right;
+}
+.title .header button {
+	color: white;
+	background-color: var(--secondary);
+	padding: 3px 6px;
+}
+.title .header img {
+	height: 35px;
+	border-radius: 50%;
+	float: left;
+}
 .title h1 {
 	color: var(--primary);
 	font-size: 1.2rem;
 	letter-spacing: 2px;
 	font-weight: normal;
+	text-align: center;
 }
 .title h2,
 .title p {

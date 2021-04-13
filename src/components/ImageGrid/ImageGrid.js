@@ -9,6 +9,7 @@ const ImageGrid = ({ setSelectedImage }) => {
 			{docs?.map(doc => (
 				<div className="img-wrap" key={doc.id} onClick={() => setSelectedImage(doc.url)}>
 					<img src={doc.url} alt="can't load" />
+					<div>hello</div>
 				</div>
 			))}
 		</div>
