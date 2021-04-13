@@ -24,7 +24,7 @@ const UploadForm = () => {
 
 	const submitHandler = e => {
 		e.preventDefault();
-		if (!file.image) return;
+		if (!file.image) return setError("please select an image");
 		setUpload(true);
 	};
 
