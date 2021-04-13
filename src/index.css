@@ -59,6 +59,7 @@ form .submitBtn {
 	padding: 3px 6px;
 	font-weight: bold;
 	border: solid 2px var(--primary);
+	margin-bottom: 20px;
 }
 form .submitBtn:hover {
 	background-color: white;
@@ -98,14 +99,14 @@ label:hover {
 .progress-bar {
 	height: 5px;
 	background: var(--primary);
-	margin-top: 20px;
+	margin-top: 50px;
 }
 /* image grid styles */
 .img-grid {
 	margin: 20px auto;
 	display: flex;
 	flex-direction: column;
-	gap: 40px;
+	gap: 20px;
 }
 .img-grid .post {
 	background-color: white;
@@ -144,7 +145,31 @@ label:hover {
 .likeAndDeleteBar span {
 	flex-grow: 1;
 }
-
+.likeBtn,
+.deleteBtn {
+	background-color: white;
+	border-radius: 10px;
+	padding: 3px 6px;
+	font-weight: bold;
+	outline: none;
+}
+.likeBtn {
+	border: solid 2px lightseagreen;
+	color: lightseagreen;
+	margin-right: 4px;
+}
+.deleteBtn {
+	border: solid 2px var(--error);
+	color: var(--error);
+}
+.likeBtn:hover {
+	color: white;
+	background-color: lightseagreen;
+}
+.deleteBtn:hover {
+	color: white;
+	background-color: var(--error);
+}
 /* modal styles */
 .backdrop {
 	position: fixed;

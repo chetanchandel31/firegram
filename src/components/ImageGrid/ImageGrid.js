@@ -30,12 +30,16 @@ const ImageGrid = ({ setSelectedImage }) => {
 						<img src={doc.url} alt="can't load" />
 					</div>
 					<div className="likeAndDeleteBar">
-						<button disabled={!user} onClick={() => likeHandler(doc.likes, doc.id)}>
+						<button className="likeBtn" disabled={!user} onClick={() => likeHandler(doc.likes, doc.id)}>
 							like
 						</button>
 						{doc?.likes?.length}
 						<span></span>
-						{user?.uid === doc.creator && <button onClick={() => deleteHandler(doc.id)}>delete</button>}
+						{user?.uid === doc.creator && (
+							<button className="deleteBtn" onClick={() => deleteHandler(doc.id)}>
+								delete
+							</button>
+						)}
 					</div>
 					<div>
 						<strong>{doc.userName}</strong> {doc?.description}
