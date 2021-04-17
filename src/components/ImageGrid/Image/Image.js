@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, firestore } from "../../../firebase/firebase";
@@ -16,15 +17,32 @@ const Image = ({ doc, setSelectedImage }) => {
 		else likes.push(user.uid);
 		collectionRef.doc(id).set({ likes }, { merge: true });
 	};
+
 	return (
-		<div className="post">
+		<motion.div
+			className="post"
+			layout //post animates to new position without delay
+			initial="hidden"
+			animate="visible"
+			variants={{
+				hidden: {
+					opacity: 0,
+				},
+				visible: {
+					opacity: 1,
+					transition: {
+						delay: 1, //but from hidden to visible there is a delay
+					},
+				},
+			}}
+		>
 			<div className="postHeader">
 				<img src={doc.userPhotoUrl} className="userDp" alt="dp" />
 				<strong>{doc?.userName}</strong>
 			</div>
-			<div className="img-wrap" onClick={() => setSelectedImage(doc.url)}>
+			<motion.div className="img-wrap" onClick={() => setSelectedImage(doc.url)} whileHover={{ opacity: 1 }}>
 				<img src={doc.url} alt="can't load" />
-			</div>
+			</motion.div>
 			<div className="likeAndDeleteBar">
 				<button className="likeBtn" disabled={!user} onClick={() => likeHandler(doc.likes, doc.id)}>
 					like
@@ -40,7 +58,7 @@ const Image = ({ doc, setSelectedImage }) => {
 			<div className="postDesc">
 				<strong>{doc.userName}</strong> {doc?.description}
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 
