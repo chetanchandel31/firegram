@@ -18,6 +18,13 @@ const Image = ({ doc, setSelectedImage }) => {
 		collectionRef.doc(id).set({ likes }, { merge: true });
 	};
 
+	const likeBtnClassname = doc.likes.includes(user?.uid) ? "likedBtn" : "likeBtn";
+
+	const additionalLikeBtnStyle = () => {
+		if (user) return null;
+		return { opacity: "0.5" };
+	};
+
 	return (
 		<motion.div
 			className="post"
@@ -44,7 +51,7 @@ const Image = ({ doc, setSelectedImage }) => {
 				<img src={doc.url} alt="can't load" />
 			</motion.div>
 			<div className="likeAndDeleteBar">
-				<button className="likeBtn" disabled={!user} onClick={() => likeHandler(doc.likes, doc.id)}>
+				<button className={likeBtnClassname} style={additionalLikeBtnStyle()} disabled={!user} onClick={() => likeHandler(doc.likes, doc.id)}>
 					like
 				</button>
 				{doc?.likes?.length}

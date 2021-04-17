@@ -147,6 +147,7 @@ label:hover {
 	flex-grow: 1;
 }
 .likeBtn,
+.likedBtn,
 .deleteBtn {
 	background-color: white;
 	border-radius: 10px;
@@ -154,18 +155,19 @@ label:hover {
 	font-weight: bold;
 	outline: none;
 }
-.likeBtn {
+.likeBtn,
+.likedBtn {
 	border: solid 2px lightseagreen;
 	color: lightseagreen;
 	margin-right: 4px;
 }
+.likedBtn {
+	color: white;
+	background-color: lightseagreen;
+}
 .deleteBtn {
 	border: solid 2px var(--error);
 	color: var(--error);
-}
-.likeBtn:hover {
-	color: white;
-	background-color: lightseagreen;
 }
 .deleteBtn:hover {
 	color: white;
