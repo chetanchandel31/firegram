@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import moment from "moment";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, firestore } from "../../../firebase/firebase";
@@ -65,6 +66,7 @@ const Image = ({ doc, setSelectedImage }) => {
 			<div className="postDesc">
 				<strong>{doc.userName}</strong> {doc?.description}
 			</div>
+			<small>{moment(doc.createdAt?.toDate()).fromNow()}</small>
 		</motion.div>
 	);
 };

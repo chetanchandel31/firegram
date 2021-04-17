@@ -110,6 +110,7 @@ label:hover {
 	gap: 20px;
 }
 .img-grid .post {
+	padding: 5px;
 	background-color: white;
 	border: solid 2px var(--primary);
 }
@@ -173,9 +174,12 @@ label:hover {
 	color: white;
 	background-color: var(--error);
 }
-
 .postDesc {
 	padding: 5px;
+}
+.post small {
+	display: block;
+	text-align: right;
 }
 /* modal styles */
 .backdrop {
