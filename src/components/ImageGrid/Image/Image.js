@@ -2,14 +2,16 @@ import { motion } from "framer-motion";
 import moment from "moment";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, firestore } from "../../../firebase/firebase";
+import { auth, firebaseStorage, firestore } from "../../../firebase/firebase";
 
 const Image = ({ doc, setSelectedImage, setSelectedDoc }) => {
 	const [user] = useAuthState(auth);
 	const collectionRef = firestore.collection("images");
+	const storageRef = firebaseStorage.refFromURL(doc.url);
 
 	const deleteHandler = id => {
 		collectionRef.doc(id).delete();
+		storageRef.delete();
 	};
 
 	const likeHandler = (likesArr, id) => {
