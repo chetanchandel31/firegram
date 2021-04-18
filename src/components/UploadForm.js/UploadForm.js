@@ -35,6 +35,7 @@ const UploadForm = () => {
 					placeholder="whats on your mind?"
 					onChange={({ target }) => setFile(file => ({ ...file, description: target.value }))}
 					value={file.description}
+					required
 				/>{" "}
 				<br />
 				<label>

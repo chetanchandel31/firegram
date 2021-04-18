@@ -133,23 +133,26 @@ label:hover {
 .userDp {
 	height: 35px;
 	border-radius: 50%;
-	margin: 0 10px;
+	margin: 0 10px 0 0;
 	padding: 5px 0;
 }
 .postHeader {
 	display: flex;
 	align-items: center;
+	padding: 0 5px;
 }
 .likeAndDeleteBar {
 	display: flex;
 	padding: 5px;
 }
-.likeAndDeleteBar span {
+.likeAndDeleteBar span,
+.postHeader span {
 	flex-grow: 1;
 }
 .likeBtn,
 .likedBtn,
-.deleteBtn {
+.deleteBtn,
+.editBtn {
 	background-color: white;
 	border-radius: 10px;
 	padding: 3px 6px;
@@ -202,4 +205,10 @@ label:hover {
 	/* margin-top: 50%; */
 	box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
 	border: 3px solid white;
+}
+/* edit modal */
+.editModalDesc {
+	color: white;
+	/* font-weight: bold; */
+	font-size: larger;
 }

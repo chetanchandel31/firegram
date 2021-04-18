@@ -4,7 +4,7 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, firestore } from "../../../firebase/firebase";
 
-const Image = ({ doc, setSelectedImage }) => {
+const Image = ({ doc, setSelectedImage, setSelectedDoc }) => {
 	const [user] = useAuthState(auth);
 	const collectionRef = firestore.collection("images");
 
@@ -47,6 +47,12 @@ const Image = ({ doc, setSelectedImage }) => {
 			<div className="postHeader">
 				<img src={doc.userPhotoUrl} className="userDp" alt="dp" />
 				<strong>{doc?.userName}</strong>
+				<span></span>
+				{user?.uid === doc.creator && (
+					<button className="editBtn" onClick={() => setSelectedDoc(doc)}>
+						edit
+					</button>
+				)}
 			</div>
 			<motion.div className="img-wrap" onClick={() => setSelectedImage(doc.url)} whileHover={{ opacity: 1 }}>
 				<img src={doc.url} alt="can't load" />
