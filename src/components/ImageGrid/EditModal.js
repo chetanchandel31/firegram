@@ -1,4 +1,5 @@
 // import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { firestore } from "../../firebase/firebase";
 
@@ -14,7 +15,7 @@ const EditModal = ({ selectedDoc, setSelectedDoc }) => {
 	};
 
 	return (
-		<div className="backdrop">
+		<motion.div className="backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
 			<div>
 				<form onSubmit={e => submitHandler(e, selectedDoc.id)}>
 					<span className="editModalDesc">Enter new description:</span>
@@ -29,7 +30,7 @@ const EditModal = ({ selectedDoc, setSelectedDoc }) => {
 					</button>
 				</form>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 
