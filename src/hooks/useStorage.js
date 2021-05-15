@@ -11,7 +11,7 @@ const useStorage = file => {
 
 	useEffect(() => {
 		//create a ref in "firebase storage" where we will later store an actual image
-		const storageRef = firebaseStorage.ref(file?.image?.name);
+		const storageRef = firebaseStorage.ref(`${file?.image?.name}${Date.now()}`);
 		const collectionRef = firestore.collection("images");
 
 		//put the actual image in that ref using an asyncronous method

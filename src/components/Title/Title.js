@@ -4,7 +4,6 @@ import firebase, { auth } from "../../firebase/firebase";
 
 const Title = () => {
 	const [user] = useAuthState(auth);
-	console.log(auth.currentUser);
 
 	const authHandler = () => {
 		if (user) auth.signOut();
