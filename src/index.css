@@ -143,11 +143,15 @@ label:hover {
 }
 .likeAndDeleteBar {
 	display: flex;
+	justify-content: space-between;
 	padding: 5px;
 }
-.likeAndDeleteBar span,
+
 .postHeader span {
 	flex-grow: 1;
+}
+.likeContainer {
+	color: lightseagreen;
 }
 .likeBtn,
 .likedBtn,

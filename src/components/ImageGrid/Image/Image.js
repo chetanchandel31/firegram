@@ -10,8 +10,10 @@ const Image = ({ doc, setSelectedImage, setSelectedDoc }) => {
 	const storageRef = firebaseStorage.refFromURL(doc.url);
 
 	const deleteHandler = id => {
-		collectionRef.doc(id).delete();
-		storageRef.delete();
+		if (window.confirm("Are you sure you want to delete this post?")) {
+			collectionRef.doc(id).delete();
+			storageRef.delete();
+		}
 	};
 
 	const likeHandler = (likesArr, id) => {
@@ -60,11 +62,13 @@ const Image = ({ doc, setSelectedImage, setSelectedDoc }) => {
 				<img src={doc.url} alt="can't load" />
 			</motion.div>
 			<div className="likeAndDeleteBar">
-				<button className={likeBtnClassname} style={additionalLikeBtnStyle()} disabled={!user} onClick={() => likeHandler(doc.likes, doc.id)}>
-					like
-				</button>
-				{doc?.likes?.length}
-				<span></span>
+				<span className="likeContainer">
+					<button className={likeBtnClassname} style={additionalLikeBtnStyle()} disabled={!user} onClick={() => likeHandler(doc.likes, doc.id)}>
+						like
+					</button>
+					{doc?.likes?.length}
+				</span>
+
 				{user?.uid === doc.creator && (
 					<button className="deleteBtn" onClick={() => deleteHandler(doc.id)}>
 						delete
