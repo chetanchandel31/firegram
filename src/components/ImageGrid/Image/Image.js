@@ -3,6 +3,7 @@ import moment from "moment";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, firebaseStorage, firestore } from "../../../firebase/firebase";
+import { FaRegThumbsUp, FaPen, FaTrashAlt } from "react-icons/fa";
 
 const Image = ({ doc, setSelectedImage, setSelectedDoc }) => {
 	const [user] = useAuthState(auth);
@@ -54,7 +55,7 @@ const Image = ({ doc, setSelectedImage, setSelectedDoc }) => {
 				<span></span>
 				{user?.uid === doc.creator && (
 					<button className="editBtn" onClick={() => setSelectedDoc(doc)}>
-						edit
+						<FaPen />
 					</button>
 				)}
 			</div>
@@ -64,14 +65,14 @@ const Image = ({ doc, setSelectedImage, setSelectedDoc }) => {
 			<div className="likeAndDeleteBar">
 				<span className="likeContainer">
 					<button className={likeBtnClassname} style={additionalLikeBtnStyle()} disabled={!user} onClick={() => likeHandler(doc.likes, doc.id)}>
-						like
+						<FaRegThumbsUp />
 					</button>
-					{doc?.likes?.length}
+					{doc?.likes?.length > 0 && doc?.likes?.length}
 				</span>
 
 				{user?.uid === doc.creator && (
 					<button className="deleteBtn" onClick={() => deleteHandler(doc.id)}>
-						delete
+						<FaTrashAlt />
 					</button>
 				)}
 			</div>
